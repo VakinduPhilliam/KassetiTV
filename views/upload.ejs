@@ -1,0 +1,144 @@
+<html>
+  <head>
+    <title> Kasseti TV - Upload Video</title>
+    <link href="/public/carousel-caption.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/public/style.css" />
+    <link rel="stylesheet" type="text/css" href="/public/button.css" />
+    <link href="/public/bootstrap.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="/public/icon.png" sizes="32x32">
+  </head>
+  <body>
+      <table width='100%' border='0' cellpadding="5px">
+      <tr> 
+      <td align='left' valign="top" width='32%'> &nbsp;&nbsp; <a style="text-decoration: none;" href="/"><img width="24px" height="23px" src="/public/icon.png" alt="Logo"> &nbsp; <img width="160px" height="55px" src="/public/brand.png" alt="Brand"> </a></td>    
+      <td border="1px" bordercolor="#bcbcbc" align='left' width='60%'> 
+        <form action="/search" method="GET">
+          <table border="0"><tr><td align='center'><input type="text" style="height: 40px; width:450px; background-color:rgb(237, 233, 233);" name="search" id="search" placeholder="Search & Find Animation Short Films ....." class="form-control input-m" /> </td><td> &nbsp;&nbsp; <button type="submit"> SEARCH </button> </td></tr></table>
+        </form>
+      </td>
+      <td align='right' valign="center" width='8%'> <a href="/about" id="about" style="text-decoration: none;"> <img width="24px" height="23px" src="/public/about.png" alt="Logo"> </a> &nbsp;&nbsp;&nbsp;</td>
+      </tr>
+      </table>
+      <strong><hr style="background-color: rgb(213, 210, 210);"></strong>
+      <table width='100%' height='100%' border='0' cellpadding="5px">
+      <tr> 
+      <td width='20%'> </td>    
+      <td border="1px" bordercolor="#bcbcbc" align='center' valign="top" width='60%' height='100%'>
+
+        
+      <table width='100%' border='0' cellpadding="5px">
+      <tr> 
+      <td align='left' valign="top">  
+        <center><font size="5" color="#616161"><strong> Upload Video </strong></font></center>
+        <br><br><br>
+      </td> 
+      </tr>
+      <tr> 
+      <td align='left' valign="top"> 
+        <form  id="save" action="/autoupload" method="POST" enctype="multipart/form-data">
+
+        <center>
+        
+        <font size="2"><input type="file" name="file" id="getFile" style="display: none" onchange="uploadFile(this)"></font>                                    
+        <font size="4" color="#6e736b"><strong> Choose Video </strong></font>
+        <a style="text-decoration: none;" onclick="document.getElementById('getFile').click()">
+        &nbsp; <img src="/public/postvideo.png" width="56px" height="52px" title="Add Video">
+        </a>
+
+        <br>
+
+        <br><br>
+        <font size="4" color="#03989E"><strong><span id="uploadProgress"></span></strong></font>
+        <br>
+        <font size="4" color="black"><span id="fileName"></span></font> 
+        <br><br>
+
+        <textarea class="form-control" placeholder=" About Video ..." name="post" id="textarea" style="width: 55%; height: 90px; resize: none; border: solid 2px #03989E; border-radius: 0.25rem;" maxlength="300" required></textarea>
+
+        <input type="hidden" name="mediaName" value="" id="mediaName" required>
+
+        <br><br>
+
+        <a style="text-decoration: none;" href="/home"><button type="button" class="btn-solid-reg" id="button" style="width: 155px;" disabled> UPLOAD </button>
+
+        </center>
+
+        <br><br>
+        
+        </form>
+        
+      </td> 
+      </tr> 
+      </table>
+
+      
+      </br></br>
+
+      <strong><hr style="background-color: rgb(213, 210, 210);"></strong>
+
+      <p class="copyright">&copy; <script>document.write(new Date().getFullYear());</script>, Kasseti TV
+
+
+      </td>
+      <td width='20%'> </td>
+      </tr>
+      </table>
+    </br>
+
+    <script>
+                                    
+      document.getElementById('mediaName').value = ((Math.random())*9999999999)+'_'+((Math.random())*9999999999);   // Generate media name
+      
+      function uploadFile(target){
+          document.getElementById('fileName').innerHTML = target.files[0].name;
+
+          let formData = new FormData(); 
+
+          let medianame = $('#mediaName').val();  
+          let text = $('#textarea').val();  
+
+          formData.append("file", getFile.files[0]);
+
+          formData.append("medianame", medianame);
+          formData.append("text", text);
+
+          let uploadName = target.files[0].name;
+
+          if(medianame != '' && uploadName != '') {  
+
+          $('#uploadProgress').text(" Uploading .... 🚀");  
+
+          document.getElementById('button').disabled = true;
+          $('#button').text(" UPLOADING ...");  
+
+          $.ajax({  
+              url:"/autoupload",  
+              method:"POST",  
+              data:formData,  
+              contentType: false,
+              processData: false,
+              success:function(data)  
+              {  
+              if(data.upload==1){
+                  $('#uploadProgress').text(" Complete! ✔");
+                  
+                  document.getElementById('button').disabled = false;
+                  $('#button').text("PUBLISH");  
+              } else {
+                  $('#uploadProgress').text(" Failed! ✖");
+                  
+                  document.getElementById('button').disabled = true;
+                  $('#button').text("UPLOAD");  
+              }
+              }  
+          });                                          
+
+          }
+      }
+      
+    </script>
+    <script src="/public/jquery.js"></script>
+    <script src="/public/bootstrap.min.js"></script> <!-- Bootstrap framework -->
+  </body>
+</html>
+

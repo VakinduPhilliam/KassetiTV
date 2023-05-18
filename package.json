@@ -1,0 +1,21 @@
+{
+  "name": "movieatlasat",
+  "version": "1.0.0",
+  "description": "Movie Atlas AT is built to make it easy for fans to visit a beautiful location from their favorite movie scene.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Theta"
+  ],
+  "author": "Vakindu Philliam",
+  "license": "BSD-3-Clause",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "request": "^2.88.2",
+    "uuid": "^9.0.0"
+  }
+}
