@@ -6,54 +6,63 @@
                 "id": "video_sikxqf72jnq0jeny2i0u8bxkm9",
                 "playback_uri": "https://media.thetavideoapi.com/video_sikxqf72jnq0jeny2i0u8bxkm9/master.m3u8",
                 "file_name": "The Cathedral",
+                "views": 143,
                 "poster":"/public/images/screenshot-1.png"
             },
             {
                 "id": "video_jptmvbs2yizhbim9m67ruz78fh",
                 "playback_uri": "https://media.thetavideoapi.com/video_jptmvbs2yizhbim9m67ruz78fh/master.m3u8",
                 "file_name": "The Kinematograph",
+                "views": 58,
                 "poster":"/public/images/screenshot-4.png"
             },
             {
                 "id": "video_mhgewn3qxqp5m3nn096bn3rppg",
                 "playback_uri": "https://media.thetavideoapi.com/video_mhgewn3qxqp5m3nn096bn3rppg/master.m3u8",
                 "file_name": "Slug Invasion",
+                "views": 23,
                 "poster":"/public/images/screenshot-3.png"
             },
             {
                 "id": "video_xjtfzzaznqqi81s38iqi1e218e",
                 "playback_uri": "https://media.thetavideoapi.com/video_xjtfzzaznqqi81s38iqi1e218e/master.m3u8",
                 "file_name": "The Backwater Gospel",
+                "views": 67,
                 "poster":"/public/images/screenshot-5.png"
             },
             {
                 "id": "video_e50fwnyx3qwdce26tw5g4x03kj",
                 "playback_uri": "https://media.thetavideoapi.com/video_e50fwnyx3qwdce26tw5g4x03kj/master.m3u8",
                 "file_name": "The Maker",
+                "views": 81,
                 "poster":"/public/images/screenshot-2.png"
             },
             {
                 "id": "video_e2p6ch6xvi98yvcukk2hh1asns",
                 "playback_uri": "https://media.thetavideoapi.com/video_e2p6ch6xvi98yvcukk2hh1asns/master.m3u8",
                 "file_name": "Zero",
+                "views": 137,
                 "poster":"/public/images/screenshot-9.png"
             },
             {
                 "id": "video_wmkrr9c88v8173nyjqnq231ggc",
                 "playback_uri": "https://media.thetavideoapi.com/video_wmkrr9c88v8173nyjqnq231ggc/master.m3u8",
                 "file_name": "Another Day of Life",
+                "views": 82,
                 "poster":"/public/images/screenshot-8.png"
             },
             {
                 "id": "video_xb4mnv7k85eb6ggvfk8dd07eea",
                 "playback_uri": "https://media.thetavideoapi.com/video_xb4mnv7k85eb6ggvfk8dd07eea/master.m3u8",
                 "file_name": "Fallen Art",
+                "views": 78,
                 "poster":"/public/images/screenshot-7.png"
             },
             {
                 "id": "video_qnbzwgpj0dz7paa89gwdp926gm",
                 "playback_uri": "https://media.thetavideoapi.com/video_qnbzwgpj0dz7paa89gwdp926gm/master.m3u8",
                 "file_name": "The Mega Plush",
+                "views": 284,
                 "poster":"/public/images/screenshot-6.png"
             }
         ]

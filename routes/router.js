@@ -2,7 +2,15 @@ const { readFileSync } = require("fs");
 const fs = require('fs');
 const { resolve } = require('path'); // Import path finder
 var request = require('request');
+const { Client, ID, Account} = require("appwrite"); // Import Appwrite NPM module
 require("dotenv").config();  // Environment event handler
+
+const client = new Client()
+    .setEndpoint('https://cloud.appwrite.io/v1') // API Endpoint
+    .setProject('645f349401c238199bb0'); // Appwrite project ID
+
+// Create a new appwrite user
+const account = new Account(client);
 
 let dataroute = resolve('./routes/json/data.json');
 
@@ -63,27 +71,126 @@ module.exports = {
         let videoId;
         let videoName;
         let videoURL;
+        let videoViews;
 
         movies.forEach(e => {
             if(e.id==id){
                 videoId = e.id;
                 videoName = e.file_name;
                 videoURL = e.playback_uri;
+                videoViews = e.views;
             } 
         });
 
-        if(videoId && videoName && videoURL){
+        if(videoId && videoName && videoURL && videoViews){
         res.render('video.ejs', {
             title: " ",
             message: '',
             movieId: videoId,
             movieName: videoName,
-            movieURL: videoURL
+            movieURL: videoURL,
+            movieViews: videoViews
         }); 
         } else {
             res.redirect('/');
         }
 
+    },
+
+    // Object function to load login page
+    login: (req, res) => {
+        res.render('login.ejs', {
+            title: " "
+            ,message: ''
+        });
+    },
+
+    // Object function to load signup page
+    signup: (req, res) => {
+        res.render('signup.ejs', {
+            title: " "
+            ,message: ''
+        });
+    },
+
+    // Object function to load forgot page
+    forgot: (req, res) => {
+        res.render('forgot.ejs', {
+            title: " "
+            ,message: ''
+        });
+    },
+
+    // Object function to login
+    signin: (req, res) => {
+
+      const {email, password} = req.body;
+
+      const login = account.createEmailSession(
+        `${email}`,
+        `${password}`
+      )
+      
+      // Get response after account created
+      login.then((response) => {
+    
+        res.status(200).json({"login": 1})
+      
+      }, (error) => {
+    
+        res.status(200).json({"login": 0, "reason":`${error}`})
+      
+      });
+
+    },
+
+    // Object function to create account
+    account: (req, res) => {
+
+        const {email, password, name} = req.body;
+
+        // Register new User
+        let newaccount = account.create(
+          ID.unique(),
+          `${email}`,
+          `${password}`,
+          `${name}`
+        )
+        
+        // Get response after account created
+        newaccount.then((response) => {
+
+          res.status(200).json({"created": 1})
+        
+        }, (error) => {
+
+          res.status(200).json({"created": 0, "reason":`${error}`})
+        
+        });
+
+    },
+
+    // Object function to recover password
+    recover: (req, res) => {
+
+        const {email} = req.body;
+
+        const forgot = account.createPasswordRecovery(
+          `${email}`,
+          'https://example.com'
+        )
+
+        // Get Response
+        forgot.then((response) => {
+      
+          res.status(200).json({"forgot": 1})
+      
+        }, (error) => {
+      
+          res.status(200).json({"forgot": 0, "reason":`${error}`})
+      
+        });
+      
     },
 
     // Object function to load upload page

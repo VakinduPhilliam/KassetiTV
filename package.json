@@ -1,7 +1,7 @@
 {
   "name": "movieatlasat",
   "version": "1.0.0",
-  "description": "Movie Atlas AT is built to make it easy for fans to visit a beautiful location from their favorite movie scene.",
+  "description": "KassetiTV is built to make it easy for fans to visit a beautiful location from their favorite movie scene.",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,6 +12,7 @@
   "author": "Vakindu Philliam",
   "license": "BSD-3-Clause",
   "dependencies": {
+    "appwrite": "^11.0.0",
     "dotenv": "^16.0.3",
     "ejs": "^3.1.8",
     "express": "^4.18.1",
